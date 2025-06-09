@@ -1,16 +1,16 @@
 package com.passtrack.fullstack_backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Route {
     @Id
     @GeneratedValue
-    private Long routeId;
-    private String startLocation;
-    private String endLocation;
-    private String schedule;
+    private Long id;
+    private String routeName;
 
+    @OneToMany(mappedBy = "route")
+    private List<Stop> stops;
 }
