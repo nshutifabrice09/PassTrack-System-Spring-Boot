@@ -18,4 +18,3 @@ public class Bus {
     private Route route;
 }
 
-}
