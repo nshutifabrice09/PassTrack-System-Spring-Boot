@@ -1,17 +1,27 @@
 package com.passtrack.fullstack_backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Booking {
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Long bookingId;
-    private String busId;
-    private String userId;
+    @ManyToOne
+    private Passenger passenger;
 
+    @ManyToOne
+    private Trip trip;
+
+    private int seatNumber; // Optional if seats are numbered
+    private LocalDateTime bookingTime;
+
+    @Enumerated(EnumType.STRING)
+    private BookingStatus status; // CONFIRMED, CANCELLED, PENDING
+
+    private String paymentStatus; // PAID, UNPAID, FAILED
 }
+
