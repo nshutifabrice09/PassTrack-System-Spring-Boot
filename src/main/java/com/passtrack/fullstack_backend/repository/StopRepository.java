@@ -1,2 +1,7 @@
-package com.passtrack.fullstack_backend.repository;public interface StopRepository {
+package com.passtrack.fullstack_backend.repository;
+
+import com.passtrack.fullstack_backend.model.Stop;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StopRepository extends JpaRepository <Stop, Long> {
 }
