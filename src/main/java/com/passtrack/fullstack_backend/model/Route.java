@@ -20,4 +20,28 @@ public class Route {
 
     @OneToMany(mappedBy = "route")
     private List<Stop> stops;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRouteName() {
+        return routeName;
+    }
+
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
+    }
+
+    public List<Stop> getStops() {
+        return stops;
+    }
+
+    public void setStops(List<Stop> stops) {
+        this.stops = stops;
+    }
 }
