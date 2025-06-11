@@ -4,6 +4,7 @@ import com.passtrack.fullstack_backend.model.Booking;
 import com.passtrack.fullstack_backend.repository.BookingRepository;
 import com.passtrack.fullstack_backend.repository.PassengerRepository;
 import com.passtrack.fullstack_backend.repository.TripRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class BookingServiceImplementation implements BookingService{
     private final PassengerRepository passengerRepository;
     private final TripRepository tripRepository;
 
+    @Autowired
     public BookingServiceImplementation(BookingRepository bookingRepository, PassengerRepository passengerRepository, TripRepository tripRepository) {
         this.bookingRepository = bookingRepository;
         this.passengerRepository = passengerRepository;
