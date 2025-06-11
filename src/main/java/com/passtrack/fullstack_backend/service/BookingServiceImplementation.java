@@ -1,6 +1,8 @@
 package com.passtrack.fullstack_backend.service;
 
 import com.passtrack.fullstack_backend.model.Booking;
+import com.passtrack.fullstack_backend.model.Passenger;
+import com.passtrack.fullstack_backend.model.Trip;
 import com.passtrack.fullstack_backend.repository.BookingRepository;
 import com.passtrack.fullstack_backend.repository.PassengerRepository;
 import com.passtrack.fullstack_backend.repository.TripRepository;
@@ -35,16 +37,28 @@ public class BookingServiceImplementation implements BookingService{
 
     @Override
     public Booking save(Booking booking, Long passengerId, Long tripId) {
-        return null;
+        Passenger passenger = passengerRepository.findPassengerById(passengerId);
+        Trip trip = tripRepository.findTripById(tripId);
+        booking.setPassenger(passenger);
+        booking.setTrip(trip);
+        return bookingRepository.save(booking);
     }
 
     @Override
     public Booking update(Booking booking, Long id) {
+        Booking existBooking = bookingRepository.findBookingById(id);
+        if(existBooking != null){
+            existBooking.setSeatNumber(booking.getSeatNumber());
+            existBooking.setBookingTime(booking.getBookingTime());
+            existBooking.setStatus(booking.getStatus());
+            existBooking.setPaymentStatus(booking.getPaymentStatus());
+            return bookingRepository.save(existBooking);
+        }
         return null;
     }
 
     @Override
     public void delete(Long id) {
-
+        bookingRepository.deleteById(id);
     }
 }
