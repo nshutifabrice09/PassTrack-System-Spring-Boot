@@ -1,6 +1,8 @@
 package com.passtrack.fullstack_backend.service;
 
 import com.passtrack.fullstack_backend.model.Bus;
+import com.passtrack.fullstack_backend.model.Driver;
+import com.passtrack.fullstack_backend.model.Route;
 import com.passtrack.fullstack_backend.repository.BusRepository;
 import com.passtrack.fullstack_backend.repository.DriverRepository;
 import com.passtrack.fullstack_backend.repository.RouteRepository;
@@ -10,8 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BusServiceImplementation implements BusService{
+public class BusServiceImplementation implements BusService {
 
+`
     private final BusRepository busRepository;
     private final DriverRepository driverRepository;
     private final RouteRepository routeRepository;
@@ -25,26 +28,37 @@ public class BusServiceImplementation implements BusService{
 
     @Override
     public List<Bus> getAllBuses() {
-        return null;
+        return busRepository.findAll();
     }
 
     @Override
     public Bus getBusById(Long id) {
-        return null;
+        return busRepository.findBusById(id);
     }
 
     @Override
     public Bus save(Bus bus, Long driverId, Long routeId) {
-        return null;
+        Driver driver = driverRepository.findDriverById(driverId);
+        Route route = routeRepository.findRouteById(routeId);
+        bus.setConductor(driver);
+        bus.setRoute(route);
+        return busRepository.save(bus);
     }
 
     @Override
     public Bus update(Long id, Bus bus) {
+        Bus existBus = busRepository.findBusById(id);
+        if (existBus != null) {
+            existBus.setBusNumber(bus.getBusNumber());
+            existBus.setLicensePlate(bus.getLicensePlate());
+            existBus.setCapacity(bus.getCapacity());
+            return busRepository.save(existBus);
+        }
         return null;
     }
 
     @Override
     public void remove(Long id) {
-
+        busRepository.deleteById(id);
     }
 }
