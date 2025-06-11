@@ -18,7 +18,7 @@ public class Driver {
     private String phoneNumber;
     private String licenseNumber;
 
-    @OneToOne(mappedBy = "driver")
+    @OneToOne
     @JoinColumn(name = "bus_id")
     private Bus bus;
 

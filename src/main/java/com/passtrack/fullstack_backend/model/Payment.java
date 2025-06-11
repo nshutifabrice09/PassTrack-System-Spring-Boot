@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Payment {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
     private float amount;
     private LocalDate paymentDate;
