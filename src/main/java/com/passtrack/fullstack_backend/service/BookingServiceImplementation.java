@@ -25,12 +25,12 @@ public class BookingServiceImplementation implements BookingService{
 
     @Override
     public List<Booking> getAllBookings() {
-        return null;
+        return bookingRepository.findAll();
     }
 
     @Override
     public Booking getBookingById(Long id) {
-        return null;
+        return bookingRepository.findBookingById(id);
     }
 
     @Override
