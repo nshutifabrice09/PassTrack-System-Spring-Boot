@@ -1,5 +1,6 @@
 package com.passtrack.fullstack_backend.service;
 
+import com.passtrack.fullstack_backend.model.Bus;
 import com.passtrack.fullstack_backend.model.Driver;
 import com.passtrack.fullstack_backend.repository.BusRepository;
 import com.passtrack.fullstack_backend.repository.DriverRepository;
@@ -18,25 +19,29 @@ public class DriverServiceImplementation implements DriverService{
         this.driverRepository = driverRepository;
         this.busRepository = busRepository;
     }
-
-
     @Override
     public List<Driver> getAllDrivers() {
-        return null;
+        return driverRepository.findAll();
     }
 
     @Override
     public Driver getDriverById(Long id) {
-        return null;
+        return driverRepository.findDriverById(id);
     }
 
     @Override
     public Driver saveDriver(Driver driver, Long busId) {
-        return null;
+        Bus bus = busRepository.findBusById(busId);
+        driver.setBus(bus);
+        return driverRepository.save(driver);
     }
 
     @Override
     public Driver updateDriver(Long id, Driver driver) {
+        Driver existDriver = driverRepository.findDriverById(id);
+        if(existDriver != null){
+            
+        }
         return null;
     }
 
