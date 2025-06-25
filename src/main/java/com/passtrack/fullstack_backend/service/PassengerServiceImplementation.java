@@ -1,2 +1,7 @@
-package com.passtrack.fullstack_backend.service;public class PassengerServiceImplementation {
+package com.passtrack.fullstack_backend.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class PassengerServiceImplementation implements PassengerService{
 }

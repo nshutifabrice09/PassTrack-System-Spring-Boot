@@ -22,7 +22,7 @@ public class NotificationServiceImplementation implements NotificationService{
     }
 
     @Override
-    public List<Notification> getNotifications() {
+    public List<Notification> getAllNotifications() {
         return notificationRepository.findAll();
     }
 

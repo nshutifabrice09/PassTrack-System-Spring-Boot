@@ -22,7 +22,7 @@ public class GPSLocationServiceImplementation implements GPSLocationService{
     }
 
     @Override
-    public List<GPSLocation> getGpsLocations() {
+    public List<GPSLocation> getAllGpsLocations() {
         return gpsLocationRepository.findAll();
     }
 
