@@ -1,6 +1,7 @@
 package com.passtrack.fullstack_backend.service;
 
 import com.passtrack.fullstack_backend.model.GPSLocation;
+import com.passtrack.fullstack_backend.model.Trip;
 import com.passtrack.fullstack_backend.repository.GPSLocationRepository;
 import com.passtrack.fullstack_backend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +33,26 @@ public class GPSLocationServiceImplementation implements GPSLocationService{
 
     @Override
     public GPSLocation saveGpsLocation(GPSLocation gpsLocation, Long tripId) {
-        return null;
+        Trip trip = tripRepository.findTripById(tripId);
+        gpsLocation.setTrip(trip);
+        return gpsLocationRepository.save(gpsLocation);
     }
 
     @Override
     public GPSLocation updateGpsLocation(Long id, GPSLocation gpsLocation) {
+        GPSLocation existGpsLocation = gpsLocationRepository.findGPSLocationById(id);
+        if(existGpsLocation != null){
+            existGpsLocation.setLatitude(gpsLocation.getLatitude());
+            existGpsLocation.setLongitude(gpsLocation.getLongitude());
+            existGpsLocation.setTimestamp(gpsLocation.getTimestamp());
+            return gpsLocationRepository.save(existGpsLocation);
+
+        }
         return null;
     }
 
     @Override
     public void removeGPSLocation(Long id) {
-
+        gpsLocationRepository.deleteById(id);
     }
 }
