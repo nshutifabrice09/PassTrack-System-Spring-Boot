@@ -40,13 +40,16 @@ public class DriverServiceImplementation implements DriverService{
     public Driver updateDriver(Long id, Driver driver) {
         Driver existDriver = driverRepository.findDriverById(id);
         if(existDriver != null){
-            
+            existDriver.setFullName(driver.getFullName());
+            existDriver.setPhoneNumber(driver.getPhoneNumber());
+            existDriver.setLicenseNumber(driver.getLicenseNumber());
+            return driverRepository.save(existDriver);
         }
         return null;
     }
 
     @Override
     public void removeDriver(Long id) {
-
+        driverRepository.deleteById(id);
     }
 }
