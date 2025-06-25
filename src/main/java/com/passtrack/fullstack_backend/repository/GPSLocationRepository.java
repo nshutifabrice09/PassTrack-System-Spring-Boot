@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GPSLocationRepository extends JpaRepository <GPSLocation, Long> {
+    GPSLocation findGPSLocationById(Long id);
 }

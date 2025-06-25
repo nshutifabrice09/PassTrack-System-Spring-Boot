@@ -22,12 +22,12 @@ public class GPSLocationServiceImplementation implements GPSLocationService{
 
     @Override
     public List<GPSLocation> getGpsLocations() {
-        return null;
+        return gpsLocationRepository.findAll();
     }
 
     @Override
     public GPSLocation getGpsLocationById(Long id) {
-        return null;
+        return gpsLocationRepository.findGPSLocationById(id);
     }
 
     @Override
