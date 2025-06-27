@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StopRepository extends JpaRepository <Stop, Long> {
+    Stop findStopById(Long id);
 }
