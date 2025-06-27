@@ -40,11 +40,18 @@ public class TripServiceImplementation implements TripService{
 
     @Override
     public Trip updateTrip(Long id, Trip trip) {
+        Trip existTrip = tripRepository.findTripById(id);
+        if(existTrip != null){
+            existTrip.setStartTime(trip.getStartTime());
+            existTrip.setEstimatedArrivalTime(trip.getEstimatedArrivalTime());
+            existTrip.setCurrentOccupancy(trip.getCurrentOccupancy());
+            return tripRepository.save(existTrip);
+        }
         return null;
     }
 
     @Override
     public void removeTrip(Long id) {
-
+        tripRepository.deleteById(id);
     }
 }
