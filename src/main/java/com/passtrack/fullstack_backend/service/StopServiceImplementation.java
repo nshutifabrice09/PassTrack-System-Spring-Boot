@@ -1,5 +1,6 @@
 package com.passtrack.fullstack_backend.service;
 
+import com.passtrack.fullstack_backend.model.Route;
 import com.passtrack.fullstack_backend.model.Stop;
 import com.passtrack.fullstack_backend.repository.RouteRepository;
 import com.passtrack.fullstack_backend.repository.StopRepository;
@@ -33,16 +34,24 @@ public class StopServiceImplementation implements StopService{
 
     @Override
     public Stop saveStop(Stop stop, Long routeId) {
-        return null;
+        Route route = routeRepository.findRouteById(routeId);
+        stop.setRoute(route);
+        return stopRepository.save(stop);
     }
 
     @Override
     public Stop updateStop(Long id, Stop stop) {
+        Stop existStop = stopRepository.findStopById(id);
+        if(existStop != null){
+            existStop.setStopName(stop.getStopName());
+            existStop.setLocation(stop.getLocation());
+            return stopRepository.save(existStop);
+        }
         return null;
     }
 
     @Override
     public void removeStop(Long id) {
-
+        stopRepository.deleteById(id);
     }
 }
