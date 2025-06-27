@@ -19,12 +19,12 @@ public class ServiceAlertServiceImplementation implements ServiceAlertService{
 
     @Override
     public List<ServiceAlert> getAllServiceAlerts() {
-        return null;
+        return serviceAlertRepository.findAll();
     }
 
     @Override
     public ServiceAlert getServiceAlertById(Long id) {
-        return null;
+        return serviceAlertRepository.findServiceAlertById(id);
     }
 
     @Override

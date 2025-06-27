@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ServiceAlertRepository extends JpaRepository <ServiceAlert, Long> {
+    ServiceAlert findServiceAlertById(Long id);
 }
