@@ -21,7 +21,6 @@ public class StopServiceImplementation implements StopService{
         this.routeRepository = routeRepository;
     }
 
-
     @Override
     public List<Stop> getAllStops() {
         return stopRepository.findAll();
