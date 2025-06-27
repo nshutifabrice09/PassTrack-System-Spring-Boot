@@ -29,16 +29,24 @@ public class ServiceAlertServiceImplementation implements ServiceAlertService{
 
     @Override
     public ServiceAlert saveServiceAlert(ServiceAlert serviceAlert) {
-        return null;
+        return serviceAlertRepository.save(serviceAlert);
     }
 
     @Override
     public ServiceAlert updateServiceAlert(Long id, ServiceAlert serviceAlert) {
+        ServiceAlert existServiceAlert = serviceAlertRepository.findServiceAlertById(id);
+        if(existServiceAlert != null){
+            existServiceAlert.setAlertMessage(serviceAlert.getAlertMessage());
+            existServiceAlert.setSeverity(serviceAlert.getSeverity());
+            existServiceAlert.setCreatedAt(serviceAlert.getCreatedAt());
+            existServiceAlert.setActive(serviceAlert.isActive());
+            return serviceAlertRepository.save(existServiceAlert);
+        }
         return null;
     }
 
     @Override
     public void removeServiceAlert(Long id) {
-
+        serviceAlertRepository.deleteById(id);
     }
 }
