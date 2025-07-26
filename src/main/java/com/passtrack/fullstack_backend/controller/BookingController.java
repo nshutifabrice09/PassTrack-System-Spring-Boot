@@ -21,6 +21,7 @@ public class BookingController {
     public Booking saveBooking(@RequestBody Booking booking, @PathVariable ("PassengerId") Long passengerId, @PathVariable ("tripId") Long tripId){
         return bookingService.save(booking, passengerId, tripId);
     }
-    
+
+
 
 }
