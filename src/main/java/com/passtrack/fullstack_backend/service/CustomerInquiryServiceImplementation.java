@@ -29,7 +29,7 @@ public class CustomerInquiryServiceImplementation implements CustomerInquiryServ
 
     @Override
     public CustomerInquiry save(CustomerInquiry customerInquiry) {
-        return null;
+        return customerInquiryRepository.save(customerInquiry);
     }
 
     @Override
