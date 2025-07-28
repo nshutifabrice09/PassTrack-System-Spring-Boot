@@ -23,9 +23,15 @@ public class StopController {
         return stopService.saveStop(stop, routeId);
     }
 
-//    @GetMapping("/routes")
-//    public List<Stop> stopList(){
-//        return stopService.getAllStops();
-//    }
+    @GetMapping("/stops")
+    public List<Stop> stopList(){
+        return stopService.getAllStops();
+    }
+
+
+    @DeleteMapping("/delete/stop/{id}")
+    public void remove(@PathVariable ("id") Long id){
+        stopService.removeStop(id);
+    }
 
 }
