@@ -27,4 +27,9 @@ public class CustomerInquiryController {
     public List<CustomerInquiry> customerInquiryList(){
         return customerInquiryService.getAllCustomerInquiries();
     }
+
+    @GetMapping("/customerInquiry/{id}")
+    public CustomerInquiry getCustomerInquiry(@PathVariable("id") Long id){
+        return customerInquiryService.getCustomerInquiryById(id);
+    }
 }

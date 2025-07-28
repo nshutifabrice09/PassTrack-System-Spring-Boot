@@ -19,12 +19,12 @@ public class CustomerInquiryServiceImplementation implements CustomerInquiryServ
 
     @Override
     public List<CustomerInquiry> getAllCustomerInquiries() {
-        return null;
+        return customerInquiryRepository.findAll();
     }
 
     @Override
     public CustomerInquiry getCustomerInquiryById(Long id) {
-        return null;
+        return customerInquiryRepository.findCustomerInquiryById(id);
     }
 
     @Override

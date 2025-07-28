@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerInquiryRepository extends JpaRepository <CustomerInquiry, Long> {
+    CustomerInquiry findCustomerInquiryById(Long id);
 }
