@@ -34,11 +34,20 @@ public class CustomerInquiryServiceImplementation implements CustomerInquiryServ
 
     @Override
     public CustomerInquiry update(Long id, CustomerInquiry customerInquiry) {
+        CustomerInquiry existCustomerInquiry = customerInquiryRepository.findCustomerInquiryById(id);
+        if(existCustomerInquiry != null){
+            existCustomerInquiry.setPassengerName(customerInquiry.getPassengerName());
+            existCustomerInquiry.setContactChannel(customerInquiry.getContactChannel());
+            existCustomerInquiry.setInquiryContent(customerInquiry.getInquiryContent());
+            existCustomerInquiry.setSubmittedAt(customerInquiry.getSubmittedAt());
+            existCustomerInquiry.setStatus(customerInquiry.getStatus());
+            return customerInquiryRepository.save(existCustomerInquiry);
+        }
         return null;
     }
 
     @Override
     public void delete(Long id) {
-
+        customerInquiryRepository.deleteById(id);
     }
 }
