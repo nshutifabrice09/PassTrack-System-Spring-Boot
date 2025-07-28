@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -20,9 +20,10 @@ public class CustomerInquiry {
     private String passengerName;
     private String contactChannel;
     private String inquiryContent;
-    private LocalDateTime submittedAt;
+    private LocalDate submittedAt;
 
-    private String status; // pending, resolved
+    @Enumerated(EnumType.STRING)
+    private Status status; // pending, resolved
 
     public Long getId() {
         return id;
@@ -56,19 +57,19 @@ public class CustomerInquiry {
         this.inquiryContent = inquiryContent;
     }
 
-    public LocalDateTime getSubmittedAt() {
+    public LocalDate getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(LocalDateTime submittedAt) {
+    public void setSubmittedAt(LocalDate submittedAt) {
         this.submittedAt = submittedAt;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
